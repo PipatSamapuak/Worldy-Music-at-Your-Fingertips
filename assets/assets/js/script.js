@@ -1,6 +1,7 @@
 var CountrySel = document.getElementById("format-input");
 var CmbRadioStation = document.getElementById("RadioStation");
 var PlayRad = document.getElementById("btnplay");
+var ChangeQuote = document.getElementById("Quote"); 
 
 var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?";
 //var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?&limit=50&order=clickcount&reverse=true&language=english";
@@ -66,15 +67,9 @@ let activities = [];
             el.value = val;
             select.appendChild(el);
         }
+      
 
   });
-
-
-
-
-
-   
-     
 
 
 function getRadioStations( countryCode) {
@@ -113,10 +108,7 @@ function getRadioStations( countryCode) {
           }
 
 
-
          // console.table(activities);
-
-
   });
 }
 
@@ -124,19 +116,31 @@ CountrySel.onchange = function() {
     
       //display correct values
       CmbRadioStation.length=1;
-      var xx=this.value;
-        console.log(xx)
-        getRadioStations(xx);
+      var TrialRadio=this.value;
+        console.log(TrialRadio)
+        getRadioStations(TrialRadio);
        
     }
 
     async function listen(){
-      var xx=CmbRadioStation.value;
+      var TrialRadio=CmbRadioStation.value;
       let music = document.getElementById('music')
-      music.src=xx;
+      music.src=TrialRadio;
       //music.currentTime=5000;
       music.play()
+      playQuote();
    }
+
+   function playQuote (){
+   fetch("https://type.fit/api/quotes")
+   .then(function(response) {
+     return response.json();
+   })
+   .then(function(data) {
+    console.log(data[0].text);
+    ChangeQuote.textContent = data[0].text;
+    });
+  }
 
    async function stop(){
       let music = document.getElementById('music')
@@ -144,10 +148,9 @@ CountrySel.onchange = function() {
       music.src=""
    }
 
-
    function PlayFunction() {
 
-    var xx=CmbRadioStation.value;
+    var TrialRadio=CmbRadioStation.value;
      var test="http://ca9.rcast.net:8014/;stream.mp3";
      playRadio(test);
 
@@ -158,5 +161,6 @@ CountrySel.onchange = function() {
       music.src=url;
       music.play()
    }
-     
+
+
   
