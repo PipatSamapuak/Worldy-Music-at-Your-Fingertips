@@ -22,34 +22,46 @@
                 <select id="format-input" class="form-input">
                     <option value="" disabled selected>Select a format...</option>
                     <!-- Need the list of Countries and updated below as per 1st option (add more "options" below as needed) -->
-                    <option value="America">America</option>
+                    <!-- <option value="us">America</option>
                     <option value="Country">Country</option>
                     <option value="Country">Country</option>
                     <option value="Country">Country</option>
                     <option value="Country">Country</option>
                     <option value="Country">Country</option>
                     <option value="Country">Country</option>
-                    <option value="Country">Country</option>
+                    <option value="Country">Country</option> -->
                 </select>
                 <!-- Drop-Down box to select Radio Station of that country -->
-                <select id="format-input" class="form-input">
+                <select id="RadioStation" class="form-input">
                     <!-- Need list of Radio Stations and updated below as per 1st option (add more "options" below as needed) -->
                     <!-- **NOTE: this could also be updated via a Array and Loop in JavaScript?? i.e. for Counrty X,Y,Z it give you options of A,B,C,D -->
-                    <option value="" disabled selected>Select a Radio Station</option>
-                    <option value="Radio Station XYZ">Radio Station XYZ</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
-                    <option value="Radio Station">Radio Station</option>
+                  <option value="" disabled selected>Select a Radio Station</option>
+                    
+
                 </select>
+
+                
                 <!-- Button to play -->
-                <button class="btn btn-info btn-block">Click Me to Play</button>
+                <button onclick="PlayFunction()">Click Me to Play</button>
+               
+
+              <!--  <table class="card-body table mx-auto my-4">
+                    <th>
+                      <p class="my-4">Results</p>
+                    </th>
+                    <tbody id="repo-table" class="mx-auto text-center"></tbody>
+                  </table>-->
+                  
             </form>
         </div>
     </div>
+
+    <audio controls id="music"></audio>
+
+    <div onclick="listen()" id="PlayRad" class="PlayRad">Click to Listen</div>
+    <div onclick="stop()">Click to Stop</div>
+
+
 
                     <!-- Linked to 1st JS file -->
     <script src="./assets/assets/js/script.js"></script>
