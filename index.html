@@ -8,68 +8,90 @@
     <title>Worldy Music at Your Fingertips</title>
     <!-- **Team to decide on Google font API and link here (below in the empty "<link/>")-->
     <link />
+
     <link rel="stylesheet" href="./assets/assets/css/jass.css" />
     <link rel="stylesheet" href="./assets/assets/css/style.css" />
+    
 </head>
 
-<body>
+<div id="container">
+    <header>
+        <div id="header">
 
-    <div>
-        <div>
-            <h1 class="text-primary">Stream Live Radio Stations from around the World for FREE!</h1>
-            <form id="search-form" class="form">
-                <!-- Drop-Down box to select Country -->
-                <select id="format-input" class="form-input">
-                    <option value="" disabled selected>Select a format...</option>
-                    <!-- Need the list of Countries and updated below as per 1st option (add more "options" below as needed) -->
-                    <!-- <option value="us">America</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option>
-                    <option value="Country">Country</option> -->
-                </select>
-                <!-- Drop-Down box to select Radio Station of that country -->
-                <select id="RadioStation" class="form-input">
-                    <!-- Need list of Radio Stations and updated below as per 1st option (add more "options" below as needed) -->
-                    <!-- **NOTE: this could also be updated via a Array and Loop in JavaScript?? i.e. for Counrty X,Y,Z it give you options of A,B,C,D -->
-                  <option value="" disabled selected>Select a Radio Station</option>
-                    
+            header
 
-                </select>
 
-                
-                <!-- Button to play -->
-                <button onclick="PlayFunction()">Click Me to Play</button>
-               
-
-              <!--  <table class="card-body table mx-auto my-4">
-                    <th>
-                      <p class="my-4">Results</p>
-                    </th>
-                    <tbody id="repo-table" class="mx-auto text-center"></tbody>
-                  </table>-->
-                  
-            </form>
         </div>
-    </div>
+    </header>
 
-    <audio controls id="music"></audio>
+    <body>
+        <div id="body">
 
-    <div onclick="listen()" id="PlayRad" class="PlayRad">Click to Listen</div>
-    <div onclick="stop()">Click to Stop</div>
+            <div class="row">
+                <div class="col-3 col-s-3 menu">
+                    <ul>
+                        <li>Gold FM - 93.2</li>
+                        <li>Hiru FM 96.1</li>
+                        <li>105.1 Life FM</li>
+                        <li>_01 SYDNEY FM</li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-s-9">
+                    <h1 class="text-primary">Stream Live Radio Stations from around the World for FREE!</h1>
+                    <form id="search-form" class="form">
+                        <!-- Drop-Down box to select Country -->
+                        <select id="format-input" class="form-input">
+                            <option value="" disabled selected>Select a Country</option>
+                        </select>
+
+                        <!-- Drop-Down box to select Radio Stations -->
+                        <select id="RadioStation" class="form-input">
+                            <option value="" disabled selected>Select a Radio Station</option>
 
 
+                        </select>
 
-                    <!-- Linked to 1st JS file -->
-    <script src="./assets/assets/js/script.js"></script>
-</body>
+                        <div>
+                            <!-- Button to play -->
+                            <br></br>
+                            <audio controls id="music"></audio>
 
-<footer>
-    <H6>Made with 💖 in colaboration with: Darien Hallam, Manoj Adikar, Pipat Samapuak, Trung Nguyen & Ben Armstrong
-    </H6>
-</footer>
+                        </div>
+
+                    </form>
+                    <br></br>
+                    <div  id="PlayRad" class="PlayRad">
+                       
+                        <button onclick="listen()">&#9654; Play</button>
+                        <button  onclick="stop()">&#11035; Stop</button>
+
+                       
+                    </div>
+                    
+                    
+                  
+                      
+                      </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- Linked to 1st JS file -->
+        <script src="./assets/assets/js/script.js"></script>
+
+    </body>
+
+    <footer>
+        <div id="footer">Made with 💖 in colaboration with: Darien Hallam, Manoj Adikari, Pipat Samapuak, Trung Nguyen &
+            Ben
+            Armstrong
+        </div>
+    </footer>
+</div>
 
 </html>
