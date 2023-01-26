@@ -96,6 +96,12 @@ Using the above skills we created this whole project from scratch including; a H
   
 We all feel rather proud, after only 6 weeks of coding to colaborate and complete such a task is greatfully satisfying.
 
+# Features for the Future
+
+* Play button opens chosen radio station to another page with clean & polished CSS
+* A list of preiously listened to stations when reloading the page 
+
+
 # License
 
 Please refer to the LICENSE in the repo.
