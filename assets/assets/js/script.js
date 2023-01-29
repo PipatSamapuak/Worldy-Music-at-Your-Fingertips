@@ -96,11 +96,15 @@ function getRadioStations(countryCode) {
     });
 }
 
-CountrySel.onchange = function () {
+function RadioOption () {
   //display correct values
   CmbRadioStation.length = 1;
-  var TrialRadio = this.value;
-  // console.log(TrialRadio);
+  var TrialRadio = CmbRadioStation.value;
+  
+  localStorage.setItem(TrialRadio, "RadioStation" ,CmbRadioStation )
+
+
+  console.log(TrialRadio);
   getRadioStations(TrialRadio);
 };
 
