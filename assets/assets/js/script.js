@@ -4,6 +4,8 @@ var PlayRad = document.getElementById("btnplay");
 var ChangeQuote = document.getElementById("Quote");
 var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?";
 let LocalPlaylist = [];
+var leftMenu = document.getElementById("MenuList"); 
+
 //var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?&limit=50&order=clickcount&reverse=true&language=english";
 
 // No need to add more API, just find a way to change ‘Country’ as user select
@@ -58,6 +60,7 @@ fetch(requestUrl)
       el.value = val;
       select.appendChild(el);
     }
+    AddPlayList();
   });
 
 function getRadioStations(countryCode) {
@@ -108,13 +111,39 @@ function SaveToLocalStorage(RadioStationName, RadioUrl) {
   // sessionStorage.removeItem("PlayList");
    var RadioStation = RadioStationName;
    var RadioStationLink = RadioUrl;
-   let NewPlayList= [];
-   LocalPlaylist.push([RadioStation, RadioStationLink]);
-   localStorage.setItem("PlayList", JSON.stringify( LocalPlaylist))
    let save = [];
-   save=JSON.parse(localStorage.getItem('PlayList'));
+   save=JSON.parse(localStorage.getItem('PlayList'))|| []; 
    console.table(save);
+   save.push([RadioStation, RadioStationLink]);
+   localStorage.setItem("PlayList", JSON.stringify(save));
  }
+
+ // Take out local storage
+ function AddPlayList() {
+  // localStorage.removeItem("PlayList");
+  let LocPlaylist = [];
+  LocPlaylist = JSON.parse(localStorage.getItem('PlayList'));
+    if (LocPlaylist != null) {
+      for (var i = 0; i < LocPlaylist.length; i++) {
+        var opt = LocPlaylist[i][0];
+        var val = LocPlaylist[i][1];
+        var el = document.createElement('li');
+        el.textContent = opt;
+        el.value = val;
+        leftMenu.appendChild(el);
+      }
+    }
+  }
+// for (var i = 0; i < data.length; i++) {
+ // activities.push([data[i].name, data[i].url]);
+// }
+
+  // var firstname = "ssss";
+  //document.getElementById('boldStuff2').innerHTML = firstname;
+  // var entry = document.createElement('li');
+  // entry.appendChild(document.createTextNode(firstname));
+  // list.appendChild(entry);
+
 
 async function listen() {
   var TrialRadio = CmbRadioStation.value;
@@ -125,7 +154,7 @@ async function listen() {
   var text = sel.options[sel.selectedIndex].text;
   music.play();
   playQuote();
-  SaveToLocalStorage(text, TrialRadio);
+  // SaveToLocalStorage(text, TrialRadio);
 }
 
 // call quotes API
@@ -206,3 +235,16 @@ async function playRadio(url) {
   music.src = url;
   music.play();
 }
+ function Addtolist(){
+
+  var TrialRadio = CmbRadioStation.value;
+  let music = document.getElementById("music");
+  music.src = TrialRadio;
+
+  var sel = document.getElementById("RadioStation");
+  var text = sel.options[sel.selectedIndex].text;
+
+  SaveToLocalStorage(text, TrialRadio);
+ }
+
+ 
