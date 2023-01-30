@@ -2,8 +2,8 @@ var CountrySel = document.getElementById("format-input");
 var CmbRadioStation = document.getElementById("RadioStation");
 var PlayRad = document.getElementById("btnplay");
 var ChangeQuote = document.getElementById("Quote");
-
 var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?";
+let LocalPlaylist = [];
 //var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?&limit=50&order=clickcount&reverse=true&language=english";
 
 // No need to add more API, just find a way to change ‘Country’ as user select
@@ -104,13 +104,28 @@ CountrySel.onchange = function () {
   getRadioStations(TrialRadio);
 };
 
+function SaveToLocalStorage(RadioStationName, RadioUrl) {
+  // sessionStorage.removeItem("PlayList");
+   var RadioStation = RadioStationName;
+   var RadioStationLink = RadioUrl;
+   let NewPlayList= [];
+   LocalPlaylist.push([RadioStation, RadioStationLink]);
+   localStorage.setItem("PlayList", JSON.stringify( LocalPlaylist))
+   let save = [];
+   save=JSON.parse(localStorage.getItem('PlayList'));
+   console.table(save);
+ }
+
 async function listen() {
   var TrialRadio = CmbRadioStation.value;
   let music = document.getElementById("music");
   music.src = TrialRadio;
   //music.currentTime=5000;
+    var sel = document.getElementById("RadioStation");
+  var text = sel.options[sel.selectedIndex].text;
   music.play();
   playQuote();
+  SaveToLocalStorage(text, TrialRadio);
 }
 
 // call quotes API
