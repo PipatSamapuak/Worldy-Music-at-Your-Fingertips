@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-image: url(../../images/music-desktop-backgrounds_090724251.jpg);
+  background-repeat:   no-repeat;
+  background-position: center center;
   
 }
 
@@ -41,6 +44,7 @@ body {
   background-color: #24252a;
   color: #fff;
 }
+
 
 [class*="col-"] {
   float: left;
