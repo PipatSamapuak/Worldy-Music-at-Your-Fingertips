@@ -173,7 +173,6 @@ function playQuote(){
   generate_random_no(); 
 }
 
-
 // function to generate random number between 1 and max number of quotes database
 // it outputs by displaying on the website the quote - author
 function generate_random_no() {
@@ -185,38 +184,6 @@ function generate_random_no() {
 // Set the timer so that every 30s, the new quote is displayed
 setInterval(generate_random_no,30000);
 
-
-// function playQuote() {
-//   fetch("https://type.fit/api/quotes")
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-      
-//       console.log(typeof(data[1].text))
-
-//       function generate_random_no() {
-//         let random_no = Math.floor(Math.random() * data.length + 1);
-//         console.log(random_no);
-//         ChangeQuote.textContent = data[random_no].text + " - " + data[random_no].author;
-//       }
-
-//       // generate a quote when a play button is clicked
-//       generate_random_no();
-    
-//     });
-// }
-
-// function to generate random number between 1 and max number of quotes database
-// it outputs by displaying on the website the quote - author
-// function generate_random_no() {
-//   let random_no = Math.floor(Math.random() * no_quote + 1);
-//   console.log(random_no);
-//   ChangeQuote.textContent = quote_data[random_no] + " - " + quote_author[random_no];
-// }
-
-// Set the timer so that every 30s, the new quote is displayed
-// setInterval(generate_random_no(),3000);
 
 async function stop() {
   let music = document.getElementById("music");
