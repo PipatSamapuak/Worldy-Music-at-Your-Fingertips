@@ -3,10 +3,14 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-image: url(../../images/music-desktop-backgrounds_090724251.jpg);
-  background-repeat:   no-repeat;
-  background-position: center center;
-  
+}
+
+/* Fonts for Quote:  */
+.DailyQuote {
+  font-family: 'Noto Serif', serif;
+  font-family: 'Roboto', sans-serif;  
+  text-align: center;
+  font-size: 35px;
 }
 
 #container {
@@ -26,14 +30,11 @@ body {
 #body {
   padding: 10px;
   padding-bottom: 60px;
-  /* Height of the footer */
-  background-image: url("../images/Freetify-Anywhere-Anytime.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-
 }
 
+.col-s-3 {
+  background-image: url("../images/Freetify-Anywhere-Anytime-2.png");
+}
 
 [class*="col-"] {
   float: left;
