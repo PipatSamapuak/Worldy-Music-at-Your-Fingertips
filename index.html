@@ -6,97 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worldy Music at Your Fingertips</title>
-    <!-- **Team to decide on Google font API and link here (below in the empty "<link/>")-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<!-- ------------------------------------Google API Font "Roboto" for Quotes-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Roboto&display=swap" rel="stylesheet">
     <link />
     <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="./assets/assets/css/jass.css" />
-    <link rel="stylesheet" href="./assets/assets/css/style.css" />
-
+<!------------------------------------Link to our CSS Files including a global rest file-->
+    <link rel="stylesheet" href="./assets/css/jass.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
+<!----------------------------------Div for Header-->
 <div id="container">
     <header>
         <div id="header">
-            header
+            Freetify - Music Anywhere Anytime
         </div>
     </header>
-
-
+<!----------------------------------Main Body of HTML-->
     <body>
         <div id="body">
-
             <div class="row">
-
-                <div  id="extra">
-                    <div class="col-3 col-s-3 menu" >
-                        
-                            <ul id="MenuList"></ul>
-                            <button onclick="Play_selected_Radio()" >&#9654; Play</button>
-                            <button onclick="Update_Radio_Station_PlayList()">&#x271A; Add</button>
-                            <button onclick="RemovRadio_Station_From_PlayList()">&#x2716; Remove</button>
-                            <div class="popup" onclick="Function_Popup_Playlist()">
-                                <span class="popuptext" id="PopupPlaylist"></span>
-                              </div>
+                <div id="extra">
+                    <div class="col-3 col-s-3 menu">
+<!---------------------------------Selction: Playlist-->
+                        <ul id="MenuList"></ul>
+                        <button onclick="Play_selected_Radio()">&#9654; Play</button>
+                        <button onclick="Update_Radio_Station_PlayList()">&#x271A; Add</button>
+                        <button onclick="RemovRadio_Station_From_PlayList()">&#x2716; Remove</button>
+                        <div class="popup" onclick="Function_Popup_Playlist()">
+                            <span class="popuptext" id="PopupPlaylist"></span>
+                        </div>
                     </div>
-                    
                 </div>
+<!----------------------------------Drop Down Boxes for user to select the counrty & radio station they wish to listen to -->
                 <div class="col-6 col-s-9">
                     <h1 class="col-primary">Stream Live Radio Stations from around the World for FREE!</h1>
                     <form id="search-form" class="form">
-                        <!-- Drop-Down box to select Country -->
+<!----------------------------------Drop-Down box to select Country-->
                         <select id="format-input" class="form-input">
                             <option value="" disabled selected>Select a Country</option>
                         </select>
-
                         <div class="popup" onclick="Function_Popup_DropDown()">
                             <span class="popuptext" id="Popup_DropDown"></span>
-                          </div>
-
-                        <!-- Drop-Down box to select Radio Stations -->
+                        </div>
+<!----------------------------------Drop-Down box to select Radio Stations-->
                         <select id="RadioStation" class="form-input">
-                            
                             <option value="" disabled selected>Select a Radio Station</option>
-
-
                         </select>
-
                         <div>
-                            <!-- Button to play -->
+<!----------------------------------Button to play-->
                             <br></br>
                             <audio controls id="music"></audio>
-
                         </div>
-
                     </form>
                     <br></br>
+<!----------------------------------Div for right hand side play and store list -->
                     <div id="PlayRad" class="PlayRad">
-                        
                         <button onclick="listen()">&#9654; Play</button>
                         <button onclick="stop()">&#11035; Stop</button>
-                      <!--  <button onclick="Addtolist()">&#11035; Add</button>-->
-                       <!--   <button onclick="Removetolist()">&#11035; Remove</button>-->
-                       
                         <div id="Quote" class="DailyQuote">Quote of the day</div>
-
                     </div>
-
-
-
-
                 </div>
-
             </div>
-
-
         </div>
-
-
 </div>
-<!-- Linked to 1st JS file -->
-<script src="./assets/assets/js/script.js"></script>
-
+<!----------------------------------Linked to JS file-->
+<script src="./assets/js/script.js"></script>
 </body>
-
+<!-- ----------------------------------Footer-->
 <footer>
     <div id="footer">Made with 💖 in colaboration with: Darien Hallam, Manoj Adikari, Pipat Samapuak, Trung Nguyen &
         Ben
@@ -104,5 +83,4 @@
     </div>
 </footer>
 </div>
-
 </html>
