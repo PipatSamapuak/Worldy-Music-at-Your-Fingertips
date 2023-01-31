@@ -179,7 +179,6 @@ function playQuote() {
   generate_random_no();
 }
 
-
 // function to generate random number between 1 and max number of quotes database
 // it outputs by displaying on the website the quote - author
 function generate_random_no() {
@@ -189,10 +188,7 @@ function generate_random_no() {
 }
 
 // Set the timer so that every 30s, the new quote is displayed
-setInterval(generate_random_no, 30000);
 
-
-//Stop Radio Station
 async function stop() {
   let music = document.getElementById("music");
   music.pause();
