@@ -1,28 +1,21 @@
+var SelectedListItemValue;
+var SelectedListItemText;
 var CountrySel = document.getElementById("format-input");
 var CmbRadioStation = document.getElementById("RadioStation");
 var PlayRad = document.getElementById("btnplay");
 var ChangeQuote = document.getElementById("Quote");
 var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?";
-let LocalPlaylist = [];
-var leftMenu = document.getElementById("MenuList"); 
+var leftMenu = document.getElementById("MenuList");
 
-//var requestUrl = "https://at1.api.radio-browser.info/json/stations/search?&limit=50&order=clickcount&reverse=true&language=english";
-
-// No need to add more API, just find a way to change ‘Country’ as user select
 fetch(requestUrl)
   .then(function (response) {
     // In order to use the data, it must first be parsed. Use .json() when the
     // API response format is JSON.
+    AddPlayList();
     return response.json();
+
   })
   .then(function (data) {
-    // console.log("Fetch Response \n-------------");
-    // console.log(data);
-
-    // for (var i = 0; i < data.length; i++) {
-    //        console.log(data[i].country)  ;
-
-    //   }
     var countrys = [];
     let activities = [];
 
@@ -60,7 +53,7 @@ fetch(requestUrl)
       el.value = val;
       select.appendChild(el);
     }
-    AddPlayList();
+
   });
 
 function getRadioStations(countryCode) {
@@ -107,70 +100,83 @@ CountrySel.onchange = function () {
   getRadioStations(TrialRadio);
 };
 
+//Save Selected Radio Station to Local Storage
 function SaveToLocalStorage(RadioStationName, RadioUrl) {
-  // sessionStorage.removeItem("PlayList");
-   var RadioStation = RadioStationName;
-   var RadioStationLink = RadioUrl;
-   let save = [];
-   save=JSON.parse(localStorage.getItem('PlayList'))|| []; 
-   console.table(save);
-   save.push([RadioStation, RadioStationLink]);
-   localStorage.setItem("PlayList", JSON.stringify(save));
- }
+  if (RadioUrl == "") {
+    var error = document.getElementById("Popup_DropDown")
+    error.textContent = "Please select a Radio Station"
+    error.classList.toggle("show");
+  }
+  else {
+    var RadioStation = RadioStationName;
+    var RadioStationLink = RadioUrl;
+    let save = [];
+    save = JSON.parse(localStorage.getItem('PlayList')) || [];
+    console.table(save);
+    save.push([RadioStation, RadioStationLink]);
+    localStorage.setItem("PlayList", JSON.stringify(save));
+    AddPlayList();
+  }
 
- // Take out local storage
- function AddPlayList() {
-  // localStorage.removeItem("PlayList");
-  let LocPlaylist = [];
-  LocPlaylist = JSON.parse(localStorage.getItem('PlayList'));
-    if (LocPlaylist != null) {
-      for (var i = 0; i < LocPlaylist.length; i++) {
-        var opt = LocPlaylist[i][0];
-        var val = LocPlaylist[i][1];
-        var el = document.createElement('li');
-        el.textContent = opt;
-        el.value = val;
-        leftMenu.appendChild(el);
-      }
+}
+
+
+// Add Local Storage data to Left Menu Play List
+function AddPlayList() {
+  //localStorage.removeItem("PlayList");
+  var ul = document.querySelector('#MenuList');
+  var listLength = ul.children.length;
+  if (listLength != 0) {
+    for (i = 0; i < listLength; i++) {
+      ul.removeChild(ul.children[0]);
     }
   }
-// for (var i = 0; i < data.length; i++) {
- // activities.push([data[i].name, data[i].url]);
-// }
 
-  // var firstname = "ssss";
-  //document.getElementById('boldStuff2').innerHTML = firstname;
-  // var entry = document.createElement('li');
-  // entry.appendChild(document.createTextNode(firstname));
-  // list.appendChild(entry);
+  let LocPlaylist = [];
+  LocPlaylist = JSON.parse(localStorage.getItem('PlayList'));
+  if (LocPlaylist != null) {
 
+    for (var i = 0; i < LocPlaylist.length; i++) {
+      var opt = LocPlaylist[i][0];
+      var val = LocPlaylist[i][1];
+      var el = document.createElement('li');
+      el.textContent = opt;
+      el.val = val;
+      leftMenu.appendChild(el);
+    }
+  }
 
+}
+
+// Play Radio Station 
 async function listen() {
   var TrialRadio = CmbRadioStation.value;
   let music = document.getElementById("music");
   music.src = TrialRadio;
   //music.currentTime=5000;
-    var sel = document.getElementById("RadioStation");
+  var sel = document.getElementById("RadioStation");
   var text = sel.options[sel.selectedIndex].text;
   music.play();
   playQuote();
-  // SaveToLocalStorage(text, TrialRadio);
+  
 }
+
+
 
 // call quotes API
 fetch("https://type.fit/api/quotes")
-.then(function (response) {
-  return response.json();
-})
-.then(function (data) {
-  quote_data = data;
-  return quote_data;
-});
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    quote_data = data;
+    return quote_data;
+  });
 
 // when play button is clicked, new quote is generated
-function playQuote(){
+function playQuote() {
   // generate a quote when a play button is clicked
-  generate_random_no(); 
+  generate_random_no();
 }
 
 
@@ -183,68 +189,116 @@ function generate_random_no() {
 }
 
 // Set the timer so that every 30s, the new quote is displayed
-setInterval(generate_random_no,30000);
+setInterval(generate_random_no, 30000);
 
 
-// function playQuote() {
-//   fetch("https://type.fit/api/quotes")
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-      
-//       console.log(typeof(data[1].text))
-
-//       function generate_random_no() {
-//         let random_no = Math.floor(Math.random() * data.length + 1);
-//         console.log(random_no);
-//         ChangeQuote.textContent = data[random_no].text + " - " + data[random_no].author;
-//       }
-
-//       // generate a quote when a play button is clicked
-//       generate_random_no();
-    
-//     });
-// }
-
-// function to generate random number between 1 and max number of quotes database
-// it outputs by displaying on the website the quote - author
-// function generate_random_no() {
-//   let random_no = Math.floor(Math.random() * no_quote + 1);
-//   console.log(random_no);
-//   ChangeQuote.textContent = quote_data[random_no] + " - " + quote_author[random_no];
-// }
-
-// Set the timer so that every 30s, the new quote is displayed
-// setInterval(generate_random_no(),3000);
-
+//Stop Radio Station
 async function stop() {
   let music = document.getElementById("music");
   music.pause();
   music.src = "";
 }
 
+//not use
 function PlayFunction() {
   var TrialRadio = CmbRadioStation.value;
   var test = "http://ca9.rcast.net:8014/;stream.mp3";
   playRadio(test);
 }
 
+//Play Selected Radio Station
 async function playRadio(url) {
   let music = document.getElementById("music");
   music.src = url;
   music.play();
 }
- function Addtolist(){
 
+
+//not use
+function Addtolist() {
+  var TrialRadio = CmbRadioStation.value;
+//  let music = document.getElementById("music");
+ // music.src = TrialRadio;
+  var sel = document.getElementById("RadioStation");
+  var text = sel.options[sel.selectedIndex].text;
+  SaveToLocalStorage(text, TrialRadio);
+}
+
+
+//Left Menu list item ckick event
+leftMenu.addEventListener("click", function (e) {
+
+  if (e.target && e.target.nodeName == "LI") {
+    SelectedListItemValue = e.target.val;
+    SelectedListItemText = e.target.innerText;
+    console.log(e.target.val);
+  }
+
+
+});
+
+//Popup Please select a Radio Station in Drop Down Box
+function Function_Popup_DropDown() {
+  var popup = document.getElementById("Popup_DropDown");
+  popup.classList.toggle("show");
+}
+
+//Popup Please select a Radio Station in Play list
+function Function_Popup_Playlist() {
+  var popup = document.getElementById("PopupPlaylist");
+  popup.classList.toggle("show");
+}
+
+//Add Radio Station to PlayList
+function Update_Radio_Station_PlayList() {
   var TrialRadio = CmbRadioStation.value;
   let music = document.getElementById("music");
   music.src = TrialRadio;
-
   var sel = document.getElementById("RadioStation");
   var text = sel.options[sel.selectedIndex].text;
-
   SaveToLocalStorage(text, TrialRadio);
- }
 
- 
+}
+
+//Play selected Radio Station From PlayList
+function Play_selected_Radio() {
+  if (SelectedListItemValue === undefined || SelectedListItemValue === null) {
+    var error = document.getElementById("PopupPlaylist")
+    error.textContent = "Please select a Radio Station"
+    error.classList.toggle("show");
+  }
+  else {
+    playRadio(SelectedListItemValue);
+    SelectedListItemValue = "";
+  }
+}
+
+//Remov selected Radio Station From PlayList
+function RemovRadio_Station_From_PlayList() {
+  if (localStorage.getItem("PlayList") === null) { } else {
+    var ls_data = JSON.parse(localStorage.getItem("PlayList"));
+    var index = -1;
+    var localStorageRadio = ls_data.filter(item => item !== SelectedListItemText);
+    for (var i = 0; i < localStorageRadio.length; i++) {
+      if (localStorageRadio[i][0] == SelectedListItemText) {
+        index = i;
+        break;
+      }
+    }
+
+    if (index == -1) {
+
+    } else {
+
+      ls_data.splice(index, 1);
+      localStorage.setItem("PlayList", JSON.stringify(ls_data));
+      console.table(ls_data);
+      AddPlayList();
+    }
+
+
+
+  }
+
+
+}
