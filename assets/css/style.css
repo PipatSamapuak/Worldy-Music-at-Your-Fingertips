@@ -37,6 +37,7 @@ body {
 }
 
 .col-s-3 {
+/*update background wallpaper*/
   background-image: url("../../assets/images/Freetify-Anywhere-Anytime-2.png");
   background-repeat:   no-repeat;
   background-position: center center;
