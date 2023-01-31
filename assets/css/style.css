@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-image: url("../../assets/images/music-desktop-backgrounds_090724251.jpg");
+  background-repeat:   no-repeat;
+  background-position: center center;
 }
 
 /* Fonts for Quote:  */
@@ -30,10 +33,17 @@ body {
 #body {
   padding: 10px;
   padding-bottom: 60px;
+
 }
 
 .col-s-3 {
-  background-image: url("../images/Freetify-Anywhere-Anytime-2.png");
+/*update background wallpaper*/
+  background-image: url("../../assets/images/Freetify-Anywhere-Anytime-2.png");
+  background-repeat:   no-repeat;
+  background-position: center center;
+  width: auto;
+  height: auto;
+  background-color: #000000;
 }
 
 [class*="col-"] {
@@ -247,7 +257,7 @@ select>option {
     width: 20%;
   }
   .col-s-3 {
-    height: 500px;
+    height: 480px;
   }
   .col-4 {
     width: 33.33%;
