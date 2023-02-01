@@ -75,8 +75,8 @@ Using our user friendly interface, combined with the Radio Browser API and searc
 N/A
 
 # Usage
-To use and view this challenge please use this the following link to access the deployed website: "https://benarmstrong81.github.io/Ben-Armstrong-Portfolio/" 
-**Team don't forget to amend to your GitHub once project deployed/finished**
+To use and view this challenge please use this the following link to access the deployed website: "https://benarmstrong81.github.io/Worldy-Music-at-Your-Fingertips/" 
+
 
 Our project allows users to use the drop-down boxes to select their country of choice and then a list of the Radio Stations available within that counrty. The second page will display an inspirational quote to inspire the user while listing to their station and put them in a uplifting, positive mindful state 🙏
 
