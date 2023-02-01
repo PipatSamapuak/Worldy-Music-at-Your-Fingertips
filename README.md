@@ -82,12 +82,17 @@ Our project allows users to use the drop-down boxes to select their country of c
 
 The following image shows the web application's appearance:
 
-![My Web Development Portfolio webpage includes a navigation bar, a professional head shot image, multiple links (placeholders at this stage) to projects completed within the UniSA Full Stack Web Development course, and working links to contact me - even download an updated resume.](./Images/BenArmstrongPortfolioWebsiteScreenShot.JPG)
+![My Web Development Portfolio webpage includes a navigation bar, a professional head shot image, multiple links (placeholders at this stage) to projects completed within the UniSA Full Stack Web Development course, and working links to contact me - even download an updated resume.](./assets/images/Freetify-deployed-image-working.PNG)
 
 # Credits
-In colaboration with: Ben Armstrong, Darien Hallam, Manoj Adikar, Pipat Samapuak & Trung Nguyen.
+In colaboration with: <br>
+* Ben Armstrong https://github.com/BenArmstrong81 <br>
+* Darien Hallam https://github.com/thorne7 <br>
+* Manoj Adikar https://github.com/ManojAdikari <br>
+* Pipat Samapuak https://github.com/PipatSamapuak <br>
+* Trung Nguyen https://github.com/Trung2096 <br>
 
-With special thanks to the UniSA Full Stack Web Development Class.
+*With special thanks to the UniSA Full Stack Web Development Class.*
 
 ## What We Learned
 Through out the past 6 weeks we have learnt the following; HTML, CSS, JavaScripot, Bootstap, JQuery, DOM, API's, Google Fonts, Creationg professional README files, Arrays, Pseudo Coding, Wireframing and much much more!!
